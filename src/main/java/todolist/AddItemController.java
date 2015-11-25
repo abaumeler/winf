@@ -1,12 +1,12 @@
 package todolist;
 
 import java.io.IOException;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
+import javax.faces.bean.ManagedProperty;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -33,10 +33,11 @@ public class AddItemController implements Serializable {
 	@Inject
 	private BusinessProcess businessProcess;
 
+	@ManagedProperty(value="#{currentTodoItemDAO}")
 	private TodoItemDAO todoItemDAO = new TodoItemDAO();
 
 	public void submitForm()  {
-		long newItemID = todoItemBusinessLogic.persistOrder(todoItemDAO);
+		long newItemID = todoItemBusinessLogic.persistTodo(todoItemDAO);
 		businessProcess.setVariable("itemId", newItemID);
 		
 

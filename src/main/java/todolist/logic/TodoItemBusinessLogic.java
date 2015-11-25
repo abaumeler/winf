@@ -1,7 +1,6 @@
 package todolist.logic;
 
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
@@ -22,7 +21,7 @@ public class TodoItemBusinessLogic {
 
 	private static Logger LOGGER = Logger.getLogger(TodoItemBusinessLogic.class.getName());
 
-	public long persistOrder(TodoItemDAO item) {
+	public long persistTodo(TodoItemDAO item) {
 		TodoItemEntity ie = new TodoItemEntity();
 		ie.setName(item.getName());
 		ie.setDetails(item.getDetails());
@@ -52,6 +51,7 @@ public class TodoItemBusinessLogic {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	public List<TodoItemEntity> getAllTodoItem(){
 		List<TodoItemEntity>allItems = entityManager.createQuery("SELECT t FROM TodoItemEntity t").getResultList();
 		return  allItems;

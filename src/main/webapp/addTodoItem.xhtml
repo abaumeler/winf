@@ -18,7 +18,7 @@
 	<h:body>
 		<h1>Add a task</h1>
 		<h:form id="submitForm">
-			<h:panelGrid columns="2">
+		  <h:panelGrid columns="2">
 
 	          <label for="name">Name</label>
 	          <!-- create process variables using the processVariables map. -->
@@ -45,6 +45,18 @@
 		          <h:outputText value="Details" />
 		        </f:facet>
 		  	 	<h:outputText value="#{item.details}"></h:outputText>
+		  	 </h:column>
+		  	 <h:column>
+		  	   	<f:facet name="header">
+		          <h:outputText value="Status" />
+		        </f:facet>
+		  	 	<h:outputText value="#{item.done}"></h:outputText>
+		  	 </h:column>
+		  	 <h:column>
+		  	   	<f:facet name="header">
+		          <h:outputText value="Actions"/>
+		        </f:facet>
+		  	 	<h:commandButton value="Mark as Finished" />
 		  	 </h:column>
   		  </h:dataTable>
 		  <h:form id="updateForm">
