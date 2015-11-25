@@ -54,10 +54,18 @@
 		  	 </h:column>
 		  	 <h:column>
 		  	   	<f:facet name="header">
-		          <h:outputText value="Actions"/>
+		          <h:outputText value="Id" />
 		        </f:facet>
-		  	 	<h:commandButton value="Mark as Finished" />
+		  	 	<h:outputText value="#{item.id}"></h:outputText>
 		  	 </h:column>
+			 <h:column>
+			   <f:facet name="header">
+			     <h:outputText value="Actions" />
+			   </f:facet>  
+			   <h:form>
+			     <h:commandLink action="#{addItemController.setItemAsFinished(item.id)}" value="finish-task" class="btn btn-small"/>
+			   </h:form>
+			 </h:column>
   		  </h:dataTable>
 		  <h:form id="updateForm">
 		    <h:commandButton id="update_button" value="Update" action="#{addItemController.getAllTodoItems()}" update="table"/>

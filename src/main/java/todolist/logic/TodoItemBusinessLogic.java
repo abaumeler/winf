@@ -35,7 +35,7 @@ public class TodoItemBusinessLogic {
 
 	public TodoItemDAO getTodoItemDAO(long itemId) {
 		TodoItemEntity ie = getItem(itemId);
-		TodoItemDAO dao = new TodoItemDAO(ie.getName(), ie.getDetails(), ie.isDone());
+		TodoItemDAO dao = new TodoItemDAO(ie.getId(), ie.getName(), ie.getDetails(), ie.isDone());
 		return dao;
 	}
 
