@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:view>
+	<f:metadata>
+		<!-- Start a new process instance. The Process Definition Key is read internally from
+    request parameters and cached in the CDI conversation scope.
+    -->
+		<f:event type="preRenderView"
+			listener="#{camundaTaskForm.startProcessInstanceByKeyForm()}" />
+	</f:metadata>
+	<h:head>
+		<title>Tasklist</title>
+	</h:head>
+	<h:body>
+		<h1>Add a task</h1>
+		<h:form id="submitForm">
+			<h:panelGrid columns="2">
+
+	          <label for="name">Name</label>
+	          <!-- create process variables using the processVariables map. -->
+	          <h:inputText id="name" value="#{addItemController.todoItemDAO.name}" required="true" />
+	
+	
+	          <label for="details">Details</label>
+	          <!-- create process variables using the processVariables map. -->
+	          <h:inputText id="details" value="#{addItemController.todoItemDAO.details}" required="true" />
+	
+		  </h:panelGrid>
+		  <h:commandButton id="add_button" value="add" action="#{addItemController.submitForm()}"/>
+		  <h:messages style="color:red;margin:8px;" />
+		  </h:form>
+		  <h:dataTable id="table" value="#{addItemController.getAllTodoItems()}" var="item">
+		  	 <h:column>
+		  	    <f:facet name="header">
+		          <h:outputText value="Name" />
+		        </f:facet>
+		  	 	<h:outputText value="#{item.name}"></h:outputText>
+		  	 </h:column>  	 
+		  	 <h:column>
+		  	   	<f:facet name="header">
+		          <h:outputText value="Details" />
+		        </f:facet>
+		  	 	<h:outputText value="#{item.details}"></h:outputText>
+		  	 </h:column>
+  		  </h:dataTable>
+		  <h:form id="updateForm">
+		    <h:commandButton id="update_button" value="Update" action="#{addItemController.getAllTodoItems()}" update="table"/>
+		  </h:form>
+		  <h:form id="finishForm">
+		    <h:commandButton id="submit_button" value="Finish" action="#{addItemController.endForm()}" />
+		  </h:form>
+
+	</h:body>
+</f:view>
+</html>
