@@ -39,9 +39,9 @@ public class TodoItemBusinessLogic {
 		return dao;
 	}
 
-	public void setDoneState(long itemId, boolean done) {
+	public void changeDoneState(long itemId) {
 		TodoItemEntity ie = getItem(itemId);
-		ie.setDone(done);
+		ie.setDone(!ie.isDone());
 		entityManager.merge(ie);
 	}
 
