@@ -39,9 +39,9 @@ public class TodoItemBusinessLogic {
 		return dao;
 	}
 
-	public void changeDoneState(long itemId) {
+	public void setItemAsDone(long itemId) {
 		TodoItemEntity ie = getItem(itemId);
-		ie.setDone(!ie.isDone());
+		ie.setDone(true);
 		entityManager.merge(ie);
 	}
 
@@ -53,7 +53,7 @@ public class TodoItemBusinessLogic {
 
 	@SuppressWarnings("unchecked")
 	public List<TodoItemEntity> getAllTodoItem(){
-		List<TodoItemEntity>allItems = entityManager.createQuery("SELECT t FROM TodoItemEntity t").getResultList();
+		List<TodoItemEntity>allItems = entityManager.createQuery("SELECT t FROM TodoItemEntity t WHERE t.done=false").getResultList();
 		return  allItems;
 	}
 	  

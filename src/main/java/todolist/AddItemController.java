@@ -68,8 +68,8 @@ public class AddItemController implements Serializable {
 		return allTodoItems;
 	}
 	
-	public void setItemAsFinished(long id){
-		todoItemBusinessLogic.changeDoneState(id);
+	public void setItemAsDone(long id){
+		todoItemBusinessLogic.setItemAsDone(id);
 	}
 
 }

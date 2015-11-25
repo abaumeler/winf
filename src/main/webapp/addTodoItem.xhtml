@@ -46,24 +46,12 @@
 		        </f:facet>
 		  	 	<h:outputText value="#{item.details}"></h:outputText>
 		  	 </h:column>
-		  	 <h:column>
-		  	   	<f:facet name="header">
-		          <h:outputText value="Status" />
-		        </f:facet>
-		  	 	<h:outputText value="#{item.done}"></h:outputText>
-		  	 </h:column>
-		  	 <h:column>
-		  	   	<f:facet name="header">
-		          <h:outputText value="Id" />
-		        </f:facet>
-		  	 	<h:outputText value="#{item.id}"></h:outputText>
-		  	 </h:column>
 			 <h:column>
 			   <f:facet name="header">
 			     <h:outputText value="Actions" />
 			   </f:facet>  
 			   <h:form>
-			     <h:commandButton action="#{addItemController.setItemAsFinished(item.id)}" value="Change Status"/>
+			     <h:commandButton action="#{addItemController.setItemAsDone(item.id)}" value="Mark as Finished"/>
 			   </h:form>
 			 </h:column>
   		  </h:dataTable>
